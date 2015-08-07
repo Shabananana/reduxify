@@ -4,12 +4,12 @@ export default class EntryItem extends Component {
   static propTypes = {
     entry: PropTypes.shape({
       id: PropTypes.number.isRequired,
-      sportId: propTypes.number.isRequired,
-      value: PropTypes.number.isRequired,
+      sportId: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
       maxEntries: PropTypes.number.isRequired
-    },
-    updateEntry: PropTypes.func.isRequired
+    }),
+    onUpdateChange: PropTypes.func.isRequired
   }
 
   constructor(props, context) {
@@ -17,18 +17,20 @@ export default class EntryItem extends Component {
   }
 
   handleUpdate = (e) => {
-    if(e.target.value <= maxEntries) {
-      this.props.updateEntry(this.props.entry.id, e.target.value);
+    let quantity = parseInt(e.target.value);
+    if(quantity <= this.props.entry.maxEntries) {
+      this.props.onUpdateChange(this.props.entry.id, quantity);
     }
   }
 
   render() {
-    const { entry, updateEntry } = this.props;
+    const { entry } = this.props;
 
     return (
       <li>
-        <span>{entry.value}</span>
-        <input type='number' value={entry.value} onChange={(e) => this.handleUpdate(e)}>
+        <span>{`Id: ${entry.id} - SportId: ${entry.sportId}`}</span>
+        <span>{entry.quantity}</span>
+        <input type='number' value={entry.quantity} onChange={(e) => this.handleUpdate(e)} />
       </li>
     );
   }

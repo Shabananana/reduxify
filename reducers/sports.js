@@ -1,0 +1,42 @@
+import { SWITCH_SPORT, VisibilityFilters } from '../constants/ActionTypes';
+
+const initialState = [
+  {
+    id: 1,
+    name: 'NFL',
+    selected: true
+  },
+  {
+    id: 2,
+    name: 'MLB',
+    selected: false
+  },
+  {
+    id: 3,
+    name: 'NBA',
+    selected: false
+  }
+];
+
+export default function visibilityFilter(state = SHOW_NLF, action) {
+  switch (action.type) {
+  case SET_VISIBILITY_FILTER:
+    return action.filter;
+  default:
+    return state;
+  }
+}
+
+export default function sports(state = initialState, action) {
+  switch (action.type) {
+    case SWITCH_SPORT:
+      return state.map(sport =>
+        sport.id === action.id ?
+          { ...sport, selected: true } :
+          { ...sport, selected: false }
+      );
+
+    default:
+      return state;
+    }
+}

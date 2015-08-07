@@ -12,7 +12,7 @@ var shell = require('gulp-shell');
 
 
 var src = './',
-    dest = './dist',
+    dest = './',
     webpackOptions = {
         debug: true,
         devtool: '#source-map',

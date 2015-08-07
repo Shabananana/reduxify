@@ -6,8 +6,8 @@ export default class SportItem extends Component {
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       selected: PropTypes.bool.isRequired
-    },
-    switchSport: PropTypes.func.isRequired
+    }),
+    onSwitchClick: PropTypes.func.isRequired
   }
 
   constructor(props, context) {
@@ -15,10 +15,10 @@ export default class SportItem extends Component {
   }
 
   render() {
-    const { sport, switchSport } = this.props;
+    const { sport, onSwitchClick } = this.props;
 
     return (
-      <li className={(sport.selected ? 'selected' : 'unselected')} onClick={() => switchSport(sport.id)}>
+      <li className={(sport.selected ? 'selected' : 'unselected')} onClick={() => onSwitchClick(sport.id)}>
         <span>{sport.name}</span>
       </li>
     );
