@@ -18,14 +18,7 @@ const initialState = [
   }
 ];
 
-export default function visibilityFilter(state = SHOW_NLF, action) {
-  switch (action.type) {
-  case SET_VISIBILITY_FILTER:
-    return action.filter;
-  default:
-    return state;
-  }
-}
+
 
 export default function sports(state = initialState, action) {
   switch (action.type) {
