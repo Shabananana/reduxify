@@ -15,11 +15,14 @@ export default class SportPicker extends Component {
     const { sports, onSwitchClick } = this.props;
 
     return(
-      <ul>
-        {sports.map(sport =>
-          <SportItem key={sport.id} sport={sport} onSwitchClick={onSwitchClick} />
-        )}
-      </ul>
+      <div>
+      <h3>Sport Picker</h3>
+        <ul>
+          {sports.map(sport =>
+            <SportItem key={sport.id} sport={sport} onSwitchClick={onSwitchClick} />
+          )}
+        </ul>
+      </div>
     );
   }
 };

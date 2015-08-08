@@ -17,6 +17,17 @@ class UgcApp extends Component {
     ]).isRequired
   }
 
+  submitEntries = () => {
+    const { sports, draftGroups, entries, dispatch } = this.props;
+    let formattedData = {
+      sportId: sports.filter(sport => sport.selected)[0].id,
+      entries: entries.filter(entry => entry.quantity > 0),
+      draftGroupId: draftGroups.filter(draftGroup => draftGroup.selected)[0].id
+    };
+    console.log(formattedData);
+    dispatch(clearEntries(formattedData.sportId));
+  }
+
   render() {
     const { sports, draftGroups, entries, visibilityFilter, dispatch } = this.props;
     return (
@@ -24,6 +35,7 @@ class UgcApp extends Component {
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
         <DraftGroupPicker draftGroups={draftGroups} onSwitchClick={ (id, sportId) => dispatch(switchDraftGroup(id, sportId)) } />
         <EntryPicker entries={entries} onUpdateChange={ (id, quantity) => dispatch(updateEntry(id, quantity)) } onClear={ sportId => dispatch(clearEntries(sportId)) } />
+        <span onClick={this.submitEntries}>Submit Entries</span>
       </div>
     );
   }
@@ -44,7 +56,8 @@ function select(state) {
   return {
     sports: state.sports,
     draftGroups: selectBySport(state.draftGroups, state.visibilityFilter),
-    entries: selectBySport(state.entries, state.visibilityFilter)
+    entries: selectBySport(state.entries, state.visibilityFilter),
+    visibilityFilter: state.visibilityFilter
   };
 }
 

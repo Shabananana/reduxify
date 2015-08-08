@@ -15,11 +15,14 @@ export default class DraftGroupPicker extends Component {
     const { draftGroups, onSwitchClick, visibilityFilter } = this.props;
 
     return (
-      <ul>
-        {draftGroups.map(draftGroup =>
-          <DraftGroup key={draftGroup.id} draftGroup={draftGroup} onSwitchClick={onSwitchClick} />
-        )}
-      </ul>
+      <div>
+        <h3>DraftGroup Picker</h3>
+        <ul>
+          {draftGroups.map(draftGroup =>
+            <DraftGroup key={draftGroup.id} draftGroup={draftGroup} onSwitchClick={onSwitchClick} />
+          )}
+        </ul>
+      </div>
     );
   }
 }
