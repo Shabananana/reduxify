@@ -66,7 +66,7 @@ const initialNflEntries = [
   {
     id: 4,
     sportId: 1,
-    quantity: 99,
+    quantity: 3,
     price: 10,
     maxEntries: 50
   }

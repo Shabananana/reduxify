@@ -18,7 +18,9 @@ export default class EntryPicker extends Component {
     return(
       <div>
       <h3>Entry Picker</h3>
-      <span onClick={() => onClear(entries[0].sportId)}>Clear All</span>
+      <strong>Total Price: ${entries.reduce((a, b) =>  a + (b.quantity * b.price), 0)}</strong>
+      <br />
+      <button onClick={() => onClear(entries[0].sportId)}>Clear All</button>
         <ul>
           {entries.map(entry =>
             <EntryItem key={entry.id} entry={entry} onUpdateChange={onUpdateChange} />

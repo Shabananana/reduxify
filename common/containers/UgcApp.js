@@ -35,7 +35,7 @@ class UgcApp extends Component {
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
         <DraftGroupPicker draftGroups={draftGroups} onSwitchClick={ (id, sportId) => dispatch(switchDraftGroup(id, sportId)) } />
         <EntryPicker entries={entries} onUpdateChange={ (id, quantity) => dispatch(updateEntry(id, quantity)) } onClear={ sportId => dispatch(clearEntries(sportId)) } />
-        <span onClick={this.submitEntries}>Submit Entries</span>
+        <button onClick={this.submitEntries}>Submit Entries</button>
       </div>
     );
   }

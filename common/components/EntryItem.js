@@ -18,7 +18,7 @@ export default class EntryItem extends Component {
 
   handleUpdate = (e) => {
     let quantity = parseInt(e.target.value);
-    if(quantity <= this.props.entry.maxEntries) {
+    if(quantity <= this.props.entry.maxEntries && quantity >= 0) {
       this.props.onUpdateChange(this.props.entry.id, quantity);
     }
   }
@@ -29,7 +29,7 @@ export default class EntryItem extends Component {
 
     return (
       <li>
-        <span>{`Id: ${entry.id} - SportId: ${entry.sportId} Quantity: ${entry.quantity}`}</span>
+        <span>{`Id: ${entry.id} - SportId: ${entry.sportId} Quantity: ${entry.quantity} Price: $${entry.price} `}</span>
         <input type='number' className={maxEntriesReached ? 'filled' : 'unfilled'} value={entry.quantity} onChange={this.handleUpdate} />
       </li>
     );
