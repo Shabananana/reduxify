@@ -1,7 +1,15 @@
 import React from 'react';
-import App from './containers/App';
+import { combineReducers, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import UgcApp from './containers/UgcApp';
+import * as reducers from './reducers';
+
+let ugcApp = combineReducers(reducers);
+let store = createStore(ugcApp);
 
 React.render(
-  <App />,
+  <Provider store={store}>
+    {() => <UgcApp />}
+  </Provider>,
   document.getElementById('root')
 );

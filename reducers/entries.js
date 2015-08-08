@@ -45,14 +45,14 @@ const initialNflEntries = [
   {
     id: 1,
     sportId: 1,
-    quantity: 0,
+    quantity: 3,
     price: 0,
     maxEntries: 50
   },
   {
     id: 2,
     sportId: 1,
-    quantity: 0,
+    quantity: 6,
     price: 1,
     maxEntries: 50
   },
@@ -66,7 +66,7 @@ const initialNflEntries = [
   {
     id: 4,
     sportId: 1,
-    quantity: 0,
+    quantity: 99,
     price: 10,
     maxEntries: 50
   }

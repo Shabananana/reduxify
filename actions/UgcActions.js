@@ -6,7 +6,7 @@ export const VisibilityFilters = {
   SHOW_NBA: 'SHOW_NBA'
 };
 
-export function udpateEntry(id, quantity) {
+export function updateEntry(id, quantity) {
   return {
     type: types.UPDATE_ENTRY,
     id,

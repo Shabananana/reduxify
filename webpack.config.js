@@ -12,6 +12,9 @@ module.exports = webpackConfig.fromObject({
     filename: 'bundle.js',
     publicPath: '/static/'
   },
+  watch: {
+
+  },
   /*plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()

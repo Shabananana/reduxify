@@ -24,13 +24,13 @@ export default class EntryItem extends Component {
   }
 
   render() {
-    const { entry } = this.props;
+    const { entry, onUpdateChange } = this.props;
+    const maxEntriesReached = entry.quantity === entry.maxEntries
 
     return (
       <li>
-        <span>{`Id: ${entry.id} - SportId: ${entry.sportId}`}</span>
-        <span>{entry.quantity}</span>
-        <input type='number' value={entry.quantity} onChange={(e) => this.handleUpdate(e)} />
+        <span>{`Id: ${entry.id} - SportId: ${entry.sportId} Quantity: ${entry.quantity}`}</span>
+        <input type='number' className={maxEntriesReached ? 'filled' : 'unfilled'} value={entry.quantity} onChange={this.handleUpdate} />
       </li>
     );
   }

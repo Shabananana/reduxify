@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class TimeItem extends Component {
+export default class DraftGroup extends Component {
   static propTypes = {
     draftGroup: PropTypes.shape({
       id: PropTypes.number.isRequired,
