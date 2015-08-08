@@ -1,8 +1,8 @@
 import React from 'react';
 import { combineReducers, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import UgcApp from './containers/UgcApp';
-import * as reducers from './reducers';
+import UgcApp from '../common/containers/UgcApp';
+import * as reducers from '../common/reducers';
 
 let ugcApp = combineReducers(reducers);
 let store = createStore(ugcApp);

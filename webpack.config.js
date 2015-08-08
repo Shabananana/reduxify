@@ -5,7 +5,7 @@ var webpackConfig = require('webpack-config');
 module.exports = webpackConfig.fromObject({
   devtool: 'eval',
   entry: [
-    './main'
+    './client/main'
   ],
   output: {
     path: path.join(__dirname, 'dist'),

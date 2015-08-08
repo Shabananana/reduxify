@@ -6,6 +6,7 @@ const filterMap = {
   2: SHOW_MLB,
   3: SHOW_NBA
 };
+let foo = 'zoo';
 
 export default function visibilityFilter(state = SHOW_NFL, action) {
   switch (action.type) {
