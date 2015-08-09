@@ -10,6 +10,30 @@ export const VisibilityFilters = {
   SHOW_PUBLIC: 'SHOW_PUBLIC'
 };
 
+export const LeagueEntrySizes = [
+  3,
+  4,
+  5,
+  6,
+  7,
+  8
+];
+
+export const LeagueEntryFees = [
+  0,
+  1,
+  3,
+  5,
+  10,
+  25,
+  50
+];
+
+export const LeagueEntryPrizeStructures = new Map([
+  [ 'WINNER_TAKES_ALL', 'Winner takes all' ],
+  [ 'TOP_2_WIN', 'Top 2 win' ]
+]);
+
 export function updateEntry(id, quantity) {
   return {
     type: types.UPDATE_ENTRY,
@@ -23,6 +47,13 @@ export function clearEntries(sportId) {
     type: types.CLEAR_ENTRIES,
     sportId
   };
+}
+
+export function updateLeagueEntry(leagueEntry) {
+  return {
+    type: types.UPDATE_LEAGUE_ENTRY,
+    leagueEntry
+  }
 }
 
 export function switchContestType(contestType) {

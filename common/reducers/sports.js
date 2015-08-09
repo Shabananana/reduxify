@@ -31,5 +31,5 @@ export default function sports(state = initialState, action) {
 
     default:
       return state;
-    }
+  }
 }

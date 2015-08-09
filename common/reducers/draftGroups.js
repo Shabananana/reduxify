@@ -67,5 +67,5 @@ export default function draftGroups(state = initialState, action) {
 
     default:
       return state;
-    }
+  }
 }

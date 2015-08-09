@@ -4,10 +4,10 @@ const { SHOW_PRIVATE, SHOW_PUBLIC} = VisibilityFilters;
 
 export default function accessTypeFilter(state = SHOW_PRIVATE, action) {
   switch (action.type) {
-  case SWITCH_ACCESS_TYPE:
-    return action.accessType;
+    case SWITCH_ACCESS_TYPE:
+      return action.accessType;
 
-  default:
-    return state;
+    default:
+      return state;
   }
 }

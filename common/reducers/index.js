@@ -4,3 +4,4 @@ export { default as entries } from './entries';
 export { default as sportFilter } from './sportFilter';
 export { default as contestTypeFilter } from './contestTypeFilter';
 export { default as accessTypeFilter } from './accessTypeFilter';
+export { default as leagueEntry } from './leagueEntry';

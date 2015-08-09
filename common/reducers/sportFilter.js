@@ -9,10 +9,10 @@ const filterMap = {
 
 export default function sportsFilter(state = SHOW_NFL, action) {
   switch (action.type) {
-  case SWITCH_SPORT:
-    return filterMap[action.id];
+    case SWITCH_SPORT:
+      return filterMap[action.id];
 
-  default:
-    return state;
+    default:
+      return state;
   }
 }

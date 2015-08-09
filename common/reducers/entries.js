@@ -92,5 +92,5 @@ export default function entries(state = initialState, action) {
 
     default:
       return state;
-    }
+  }
 }
