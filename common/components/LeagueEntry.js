@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { LeagueEntrySizes, LeagueEntryFees, LeagueEntryPrizeStructures } from '../actions/UgcActions';
+import { LeagueEntrySizes, LeagueEntryPrizeStructures } from '../constants/StaticData';
 
 export default class LeagueEntry extends Component {
   static propTypes = {

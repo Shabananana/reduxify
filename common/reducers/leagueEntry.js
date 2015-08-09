@@ -1,5 +1,5 @@
 import { UPDATE_LEAGUE_ENTRY } from '../constants/ActionTypes';
-import { LeagueEntryPrizeStructures } from '../actions/UgcActions';
+import { LeagueEntryPrizeStructures } from '../constants/StaticData';
 
 const initialState = {
     size: 3,
