@@ -1,15 +1,5 @@
 import * as types from '../constants/ActionTypes';
 
-export const VisibilityFilters = {
-  SHOW_NFL: 'SHOW_NFL',
-  SHOW_MLB: 'SHOW_MLB',
-  SHOW_NBA: 'SHOW_NBA',
-  SHOW_H2H: 'SHOW_H2H',
-  SHOW_LEAGUE: 'SHOW_LEAGUE',
-  SHOW_PRIVATE: 'SHOW_PRIVATE',
-  SHOW_PUBLIC: 'SHOW_PUBLIC'
-};
-
 export const LeagueEntrySizes = [
   3,
   4,
@@ -19,20 +9,31 @@ export const LeagueEntrySizes = [
   8
 ];
 
-export const LeagueEntryFees = [
-  0,
-  1,
-  3,
-  5,
-  10,
-  25,
-  50
-];
-
 export const LeagueEntryPrizeStructures = new Map([
   [ 'WINNER_TAKES_ALL', 'Winner takes all' ],
   [ 'TOP_2_WIN', 'Top 2 win' ]
 ]);
+
+export function createUser(user) {
+  return {
+    type: types.CREATE_USER,
+    user
+  };
+}
+
+export function deleteUser(id) {
+  return {
+    type: types.DELETE_USER,
+    id
+  }
+}
+
+export function updateUser(userName) {
+  return {
+    type: types.UPDATE_USER,
+    userName
+  }
+}
 
 export function updateEntry(id, quantity) {
   return {

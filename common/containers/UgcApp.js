@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import SportPicker from './SportPicker';
 import DraftGroupPicker from './DraftGroupPicker';
 import EntryPicker from './EntryPicker';
+import UsersPicker from './UsersPicker';
 import LeagueEntry from '../components/LeagueEntry';
 import ContestType from '../components/ContestType';
 import AccessType from '../components/AccessType';
-import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, VisibilityFilters } from '../actions/UgcActions';
+import { VisibilityFilters } from '../constants/Filters';
+import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, updateUser, createUser, deleteUser } from '../actions/UgcActions';
 
 class UgcApp extends Component {
   static propTypes = {
@@ -14,6 +16,7 @@ class UgcApp extends Component {
     draftGroups: PropTypes.array.isRequired,
     entries: PropTypes.array.isRequired,
     leagueEntry: PropTypes.object.isRequired,
+    users: PropTypes.array.isRequired,
     sportFilter: PropTypes.oneOf([
       'SHOW_NFL',
       'SHOW_MLB',
@@ -41,16 +44,20 @@ class UgcApp extends Component {
   }
 
   render() {
-    const { sports, draftGroups, entries, leagueEntry, sportFilter, contestTypeFilter, accessTypeFilter, dispatch } = this.props;
+    const { sports, draftGroups, entries, users, newUser, leagueEntry, sportFilter, contestTypeFilter, accessTypeFilter, dispatch } = this.props;
     return (
       <div>
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
         <DraftGroupPicker draftGroups={draftGroups} onSwitchClick={ (id, sportId) => dispatch(switchDraftGroup(id, sportId)) } />
         <ContestType contestType={contestTypeFilter} onSwitchClick={ (contestType) => dispatch(switchContestType(contestType)) } />
         <AccessType accessType={accessTypeFilter} onSwitchClick={ (accessType) => dispatch(switchAccessType(accessType)) } />
+        {accessTypeFilter === VisibilityFilters.SHOW_PRIVATE ?
+          <UsersPicker users={users} newUser={newUser} onUpdateChange={ (userName) => dispatch(updateUser(userName)) } onAddClick={ (user) => dispatch(createUser(user)) } onRemoveClick={ (id) => dispatch(deleteUser(id)) } /> :
+          <span></span>
+        }
         {contestTypeFilter === VisibilityFilters.SHOW_H2H ?
           <EntryPicker entries={entries} onUpdateChange={ (id, quantity) => dispatch(updateEntry(id, quantity)) } onClear={ sportId => dispatch(clearEntries(sportId)) } /> :
-          <LeagueEntry leagueEntry={leagueEntry} onUpdateChange={ (leagueEntry) => dispatch(updateLeagueEntry(leagueEntry)) }/>
+          <LeagueEntry leagueEntry={leagueEntry} entries={entries} onUpdateChange={ (leagueEntry) => dispatch(updateLeagueEntry(leagueEntry)) }/>
         }
         <button onClick={this.submitEntries}>Submit Entries</button>
       </div>
@@ -74,6 +81,8 @@ function select(state) {
     sports: state.sports,
     draftGroups: selectBySport(state.draftGroups, state.sportFilter),
     entries: selectBySport(state.entries, state.sportFilter),
+    users: state.users,
+    newUser: state.newUser,
     leagueEntry: state.leagueEntry,
     sportFilter: state.sportFilter,
     contestTypeFilter: state.contestTypeFilter,

@@ -1,4 +1,5 @@
-import { SWITCH_DRAFTGROUP, VisibilityFilters } from '../constants/ActionTypes';
+import { SWITCH_DRAFTGROUP } from '../constants/ActionTypes';
+import { VisibilityFilters } from '../constants/Filters';
 
 const initialNflDraftGroups = [
   {

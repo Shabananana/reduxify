@@ -1,4 +1,5 @@
-import { UPDATE_ENTRY, CLEAR_ENTRIES, VisibilityFilters } from '../constants/ActionTypes';
+import { UPDATE_ENTRY, CLEAR_ENTRIES } from '../constants/ActionTypes';
+import { VisibilityFilters } from '../constants/Filters';
 
 const initialNbaEntries = [
   {

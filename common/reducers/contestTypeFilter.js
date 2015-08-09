@@ -1,5 +1,5 @@
 import { SWITCH_CONTEST_TYPE } from '../constants/ActionTypes';
-import { VisibilityFilters } from '../actions/UgcActions';
+import { VisibilityFilters } from '../constants/Filters';
 const { SHOW_H2H, SHOW_LEAGUE } = VisibilityFilters;
 
 export default function contestTypeFilter(state = SHOW_H2H, action) {

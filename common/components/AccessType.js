@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { VisibilityFilters } from '../actions/UgcActions';
+import { VisibilityFilters } from '../constants/Filters';
 
 export default class AccessType extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ export default class AccessType extends Component {
   }
 
   render() {
-    var { accessType, onSwitchClick } = this.props;
+    const { accessType, onSwitchClick } = this.props;
 
     return (
       <div>

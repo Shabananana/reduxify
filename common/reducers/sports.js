@@ -1,4 +1,5 @@
-import { SWITCH_SPORT, VisibilityFilters } from '../constants/ActionTypes';
+import { SWITCH_SPORT } from '../constants/ActionTypes';
+import { VisibilityFilters } from '../constants/Filters'; 
 
 const initialState = [
   {

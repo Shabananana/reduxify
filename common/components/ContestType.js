@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { VisibilityFilters } from '../actions/UgcActions';
+import { VisibilityFilters } from '../constants/Filters';
 
 export default class DraftGroup extends Component {
   static propTypes = {
@@ -15,7 +15,7 @@ export default class DraftGroup extends Component {
   }
 
   render() {
-    var { contestType, onSwitchClick } = this.props;
+    const { contestType, onSwitchClick } = this.props;
 
     return (
       <div>

@@ -3,7 +3,7 @@ import { LeagueEntryPrizeStructures } from '../actions/UgcActions';
 
 const initialState = {
     size: 3,
-    fee: 5,
+    price: 5,
     name: '',
     prizeStructure: LeagueEntryPrizeStructures.get('WINNER_TAKES_ALL')
 };

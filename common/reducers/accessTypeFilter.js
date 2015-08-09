@@ -1,5 +1,5 @@
 import { SWITCH_ACCESS_TYPE } from '../constants/ActionTypes';
-import { VisibilityFilters } from '../actions/UgcActions';
+import { VisibilityFilters } from '../constants/Filters';
 const { SHOW_PRIVATE, SHOW_PUBLIC} = VisibilityFilters;
 
 export default function accessTypeFilter(state = SHOW_PRIVATE, action) {

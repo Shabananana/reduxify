@@ -1,5 +1,5 @@
 import { SWITCH_SPORT } from '../constants/ActionTypes';
-import { VisibilityFilters } from '../actions/UgcActions';
+import { VisibilityFilters } from '../constants/Filters';
 const { SHOW_NFL, SHOW_MLB, SHOW_NBA } = VisibilityFilters;
 const filterMap = {
   1: SHOW_NFL,
