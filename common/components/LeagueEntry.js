@@ -43,7 +43,7 @@ export default class LeagueEntry extends Component {
           <select value={leagueEntry.size} name='size' onChange={this.handleUpdate}>
             {sizesOptions}
           </select>
-          <select value={leagueEntry.price} name='fee' onChange={this.handleUpdate}>
+          <select value={leagueEntry.price} name='price' onChange={this.handleUpdate}>
             {feeOptions}
           </select>
           <select value={leagueEntry.prizeStructure} name='prizeStructure' onChange={this.handleUpdate}>
