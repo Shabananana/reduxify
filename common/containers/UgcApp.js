@@ -8,6 +8,7 @@ import LeagueEntry from '../components/LeagueEntry';
 import ContestType from '../components/ContestType';
 import AccessType from '../components/AccessType';
 import { VisibilityFilters } from '../constants/Filters';
+//import { ugcSelector } from '../selectors/UgcSelectors';
 import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, updateUser, createUser, deleteUser } from '../actions/UgcActions';
 
 class UgcApp extends Component {
