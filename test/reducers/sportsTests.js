@@ -1,6 +1,6 @@
 import expect from 'expect';
-import reducer from '../common/reducers/sports';
-import * as types from '../common/constants/ActionTypes';
+import reducer from '../../common/reducers/sports';
+import * as types from '../../common/constants/ActionTypes';
 
 const initialState = [
   {

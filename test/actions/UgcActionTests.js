@@ -1,6 +1,6 @@
 import expect from 'expect';
-import * as actions from '../common/actions/UgcActions';
-import * as types from '../common/constants/ActionTypes';
+import * as actions from '../../common/actions/UgcActions';
+import * as types from '../../common/constants/ActionTypes';
 describe('actions', () => {
   it('should create an action to update an entry', () => {
     const id = 67;

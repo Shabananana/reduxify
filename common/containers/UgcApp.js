@@ -84,7 +84,7 @@ function select(state) {
     entries: selectBySport(state.entries, state.sportFilter),
     users: state.users,
     newUser: state.newUser,
-    leagueEntry: state.leagueEntry,
+    leagueEntry: selectBySport(state.leagueEntries, state.sportFilter)[0],
     sportFilter: state.sportFilter,
     contestTypeFilter: state.contestTypeFilter,
     accessTypeFilter: state.accessTypeFilter

@@ -5,6 +5,7 @@ export default class LeagueEntry extends Component {
   static propTypes = {
     leagueEntry: PropTypes.shape({
       name: PropTypes.string.isRequired,
+      sportId: PropTypes.number.isRequired,
       size: PropTypes.number.isRequired,
       price: PropTypes.number.isRequired,
       prizeStructure: PropTypes.string.isRequired
