@@ -1,5 +1,5 @@
 import { SWITCH_SPORT } from '../constants/ActionTypes';
-import { VisibilityFilters } from '../constants/Filters'; 
+import { VisibilityFilters } from '../constants/Filters';
 
 const initialState = [
   {
@@ -18,8 +18,6 @@ const initialState = [
     selected: false
   }
 ];
-
-
 
 export default function sports(state = initialState, action) {
   switch (action.type) {

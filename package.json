@@ -65,6 +65,9 @@
     "webpack": "^1.9.6",
     "webpack-config": "^0.7.0"
   },
+  "babel": {
+    "stage": 0
+  },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "testFileExtensions": [
