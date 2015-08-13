@@ -8,7 +8,7 @@ const initialState = {
 export default function newUser(state = initialState, action) {
   switch (action.type) {
     case CREATE_USER:
-      return { ...state, ...initialState };
+      return { ...initialState };
 
     case UPDATE_USER:
       return { ...state, userName: action.userName };
