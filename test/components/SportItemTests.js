@@ -1,12 +1,12 @@
 import expect from 'expect';
-import jsdomReact from '../utils/jsdomReact';
+import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import SportItem from '../../common/components/SportItem';
 
 const { TestUtils } = React.addons;
 
 function setup() {
-  let props = {
+  const props = {
     sport: {
       id: 3,
       name: 'NBA',
@@ -15,41 +15,41 @@ function setup() {
     onSwitchClick: expect.createSpy()
   };
 
-  let renderer = TestUtils.createRenderer();
-  renderer.render(<SportItem {...props} />);
-  let output = renderer.getRenderOutput();
+  const renderedComponent = TestUtils.renderIntoDocument(
+    <SportItem { ...props }/>
+  );
+  const [ li ] = TestUtils.scryRenderedDOMComponentsWithTag(
+    renderedComponent,
+    'li'
+  );
+
+  const [ span ] = TestUtils.scryRenderedDOMComponentsWithTag(
+    renderedComponent,
+    'span'
+  );
 
   return {
-    props: props,
-    output: output,
-    renderer: renderer
+    props,
+    renderedComponent,
+    li: li.getDOMNode(),
+    span: span.getDOMNode()
   };
 }
 
 describe('components', () => {
-  jsdomReact();
-
+  jsDomSetUp();
   describe('SportItem', () => {
     it('should render correctly', () => {
-      const { output } = setup();
+      const { li, span } = setup();
 
-      expect(output.type).toBe('li');
-      expect(output.props.className).toBe('unselected');
-      expect(output.props.children).toEqual(<span>NBA</span>);
-
+      expect(li.getAttribute('class')).toBe('unselected');
+      expect(span.textContent).toEqual('NBA');
     });
 
     it('should call onSwitchClick with sportId as a param when clicked', () => {
-      //cannot actually simulate dom events with shallow rendering for now
-      // -_______________________________________________________________-
-      //we can access react events through the _store.props property
-      //this is hacky and should only be used until simulated events are supported by shallow rendering
-      //for a workaround, we call the 'onClick' property manually
-      //this essentially simulates a click, (more or less)
-      //use Function.prototype.call() with the the this parameter being the component
-      const { output, props } = setup();
+      const { props, span } = setup();
       expect(props.onSwitchClick.calls.length).toBe(0);
-      output._store.props.onClick.call(output);
+      TestUtils.Simulate.click(span);
       expect(props.onSwitchClick.calls.length).toBe(1);
       expect(props.onSwitchClick.calls[0].arguments).toEqual([props.sport.id]);
     });

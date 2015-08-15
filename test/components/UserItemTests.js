@@ -1,12 +1,12 @@
 import expect from 'expect';
-import jsdomReact from '../utils/jsdomReact';
+import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import UserItem from '../../common/components/UserItem';
 
 const { TestUtils } = React.addons;
 
 function setup() {
-  let props = {
+  const props = {
     user: {
       id: 3,
       userName: 'Shabananana'
@@ -14,41 +14,42 @@ function setup() {
     onRemoveClick: expect.createSpy()
   };
 
-  let renderer = TestUtils.createRenderer();
-  renderer.render(<UserItem {...props} />);
-  let output = renderer.getRenderOutput();
+  const renderedComponent = TestUtils.renderIntoDocument(
+    <UserItem { ...props }/>
+  );
+
+  const span = TestUtils.findRenderedDOMComponentWithTag(
+    renderedComponent,
+    'span'
+  );
+
+  const button = TestUtils.findRenderedDOMComponentWithTag(
+    renderedComponent,
+    'button'
+  );
 
   return {
-    props: props,
-    output: output,
-    renderer: renderer
+    props,
+    span: span.getDOMNode(),
+    button: button.getDOMNode()
   };
 }
 
 describe('components', () => {
-  jsdomReact();
+  jsDomSetUp();
 
   describe('UserItem', () => {
     it('should render correctly', () => {
-      const { output, props } = setup();
+      const { props, span, button } = setup();
 
-      expect(output.type).toBe('li');
-      let [ span, button ] = output.props.children;
-      expect(span).toEqual(<span>Shabananana</span>);
+      expect(span.textContent).toBe(props.user.userName);
+      //expect(button.getAttribute('onclick')).toEqual(props.onSwitchClick);
     });
 
     it('should call onRemoveClick with userId as a param when clicked', () => {
-      //cannot actually simulate dom events with shallow rendering for now
-      // -_______________________________________________________________-
-      //we can access react events through the _store.props property
-      //this is hacky and should only be used until simulated events are supported by shallow rendering
-      //for a workaround, we call the 'onClick' property manually
-      //this essentially simulates a click, (more or less)
-      //use Function.prototype.call() with the the this parameter being the component
-      const { output, props } = setup();
-      const button = output.props.children.filter(item => item.type === 'button')[0];
+      const { props, button } = setup();
       expect(props.onRemoveClick.calls.length).toBe(0);
-      button._store.props.onClick.call(output);
+      TestUtils.Simulate.click(button);
       expect(props.onRemoveClick.calls.length).toBe(1);
       expect(props.onRemoveClick.calls[0].arguments).toEqual([props.user.id]);
     });

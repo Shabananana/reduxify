@@ -4,8 +4,8 @@ import { VisibilityFilters } from '../constants/Filters';
 export default class AccessType extends Component {
   static propTypes = {
     accessType: PropTypes.oneOf([
-      'SHOW_PRIVATE',
-      'SHOW_PUBLIC'
+      VisibilityFilters.SHOW_PRIVATE,
+      VisibilityFilters.SHOW_PUBLIC
     ]).isRequired,
     onSwitchClick: PropTypes.func.isRequired
   }
@@ -19,7 +19,7 @@ export default class AccessType extends Component {
 
     return (
       <div>
-      <h3>Access Type Picker</h3>
+        <h3>Access Type Picker</h3>
         <ul>
           <li className={accessType === VisibilityFilters.SHOW_PRIVATE ? 'selected' : 'unselected'}>
             <span onClick={() => onSwitchClick(VisibilityFilters.SHOW_PRIVATE)}>Private</span>
