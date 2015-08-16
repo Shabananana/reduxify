@@ -1,22 +1,23 @@
 import expect from 'expect';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
-import SportItem from '../../common/components/SportItem';
+import DrafGroup from '../../common/components/DraftGroup';
 
 const { TestUtils } = React.addons;
 
 function setup() {
   const props = {
-    sport: {
-      id: 3,
-      name: 'NBA',
+    draftGroup: {
+      id: 5,
+      sportId: 3,
+      name: 'Test Draft Group 34343',
       selected: false
     },
     onSwitchClick: expect.createSpy()
   };
 
   const renderedComponent = TestUtils.renderIntoDocument(
-    <SportItem { ...props }/>
+    <DrafGroup { ...props }/>
   );
 
   const li = TestUtils.findRenderedDOMComponentWithTag(
@@ -39,20 +40,20 @@ function setup() {
 
 describe('components', () => {
   jsDomSetUp();
-  describe('SportItem', () => {
+  describe('DraftGroup', () => {
     it('should render correctly', () => {
-      const { li, span } = setup();
+      const { props, li, span } = setup();
 
       expect(li.getAttribute('class')).toBe('unselected');
-      expect(span.textContent).toEqual('NBA');
+      expect(span.textContent).toBe(props.draftGroup.name);
     });
 
-    it('should call onSwitchClick with sportId as a param when clicked', () => {
+    it('should call onSwitchClick with draftGroup id and sportId as params when clicked', () => {
       const { props, span } = setup();
       expect(props.onSwitchClick.calls.length).toBe(0);
       TestUtils.Simulate.click(span);
       expect(props.onSwitchClick.calls.length).toBe(1);
-      expect(props.onSwitchClick.calls[0].arguments).toEqual([props.sport.id]);
+      expect(props.onSwitchClick.calls[0].arguments).toEqual([props.draftGroup.id, props.draftGroup.sportId]);
     });
   });
 });

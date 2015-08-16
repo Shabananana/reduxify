@@ -18,7 +18,7 @@ export default class EntryItem extends Component {
 
   handleUpdate = (e) => {
     let quantity = parseInt(e.target.value);
-    if(quantity <= this.props.entry.maxEntries && quantity >= 0) {
+    if(typeof quantity === 'number' && quantity <= this.props.entry.maxEntries && quantity >= 0) {
       this.props.onUpdateChange(this.props.entry.id, quantity);
     }
   }

@@ -10,6 +10,7 @@ export default class LeagueEntry extends Component {
       price: PropTypes.number.isRequired,
       prizeStructure: PropTypes.string.isRequired
     }).isRequired,
+    entries: PropTypes.array.isRequired,
     onUpdateChange: PropTypes.func.isRequired
   }
 

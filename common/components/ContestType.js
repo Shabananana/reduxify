@@ -4,8 +4,8 @@ import { VisibilityFilters } from '../constants/Filters';
 export default class DraftGroup extends Component {
   static propTypes = {
     contestType: PropTypes.oneOf([
-      'SHOW_H2H',
-      'SHOW_LEAGUE'
+      VisibilityFilters.SHOW_H2H,
+      VisibilityFilters.SHOW_LEAGUE
     ]).isRequired,
     onSwitchClick: PropTypes.func.isRequired
   }
