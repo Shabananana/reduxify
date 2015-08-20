@@ -3,5 +3,5 @@
 to work...
   - clone repo
   - npm install
-  - gulp webpack
-  - open index.html
+  - npm start
+  - localhost:3000
