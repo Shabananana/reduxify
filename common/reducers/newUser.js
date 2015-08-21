@@ -1,14 +1,10 @@
 import { CREATE_USER, UPDATE_USER } from '../constants/ActionTypes';
+import { initialUser } from '../constants/InitialState';
 
-const initialState = {
-  id: 0,
-  userName: ''
-};
-
-export default function newUser(state = initialState, action) {
+export default function newUser(state = initialUser, action) {
   switch (action.type) {
     case CREATE_USER:
-      return { ...initialState };
+      return { ...initialUser };
 
     case UPDATE_USER:
       return { ...state, userName: action.userName };

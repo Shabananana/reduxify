@@ -1,17 +1,13 @@
 import expect from 'expect';
 import reducer from '../../common/reducers/newUser';
 import * as types from '../../common/constants/ActionTypes';
-
-const initialState = {
-  id: 0,
-  userName: ''
-};
+import { initialUser } from '../../common/constants/InitialState';
 
 describe('newUser reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialState);
+    ).toEqual(initialUser);
   });
 
   it('should handle CREATE_USER', () => {
@@ -19,20 +15,20 @@ describe('newUser reducer', () => {
       id: 2,
       userName: 'FakeShabananana'
     };
-    const updatedState = [...initialState, user];
+    const updatedState = [...initialUser, user];
     expect(
-      reducer(initialState, {
+      reducer(initialUser, {
         type: types.CREATE_USER,
         user
       })
-    ).toEqual(initialState);
+    ).toEqual(initialUser);
   });
 
   it('should handle UPDATE_USER', () => {
     const userName = 'FakeShabananana';
-    const updatedState = { ...initialState, userName };
+    const updatedState = { ...initialUser, userName };
     expect(
-      reducer(initialState, {
+      reducer(initialUser, {
         type: types.UPDATE_USER,
         userName
       })
