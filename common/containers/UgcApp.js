@@ -9,7 +9,7 @@ import ContestType from '../components/ContestType';
 import AccessType from '../components/AccessType';
 import { VisibilityFilters } from '../constants/Filters';
 //import { ugcSelector } from '../selectors/UgcSelectors';
-import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, updateUser, createUser, deleteUser } from '../actions/UgcActions';
+import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, updateUser, fetchAndCreateUser, deleteUser } from '../actions/UgcActions';
 
 class UgcApp extends Component {
   static propTypes = {
@@ -53,7 +53,7 @@ class UgcApp extends Component {
         <ContestType contestType={contestTypeFilter} onSwitchClick={ (contestType) => dispatch(switchContestType(contestType)) } />
         <AccessType accessType={accessTypeFilter} onSwitchClick={ (accessType) => dispatch(switchAccessType(accessType)) } />
         {accessTypeFilter === VisibilityFilters.SHOW_PRIVATE ?
-          <UsersPicker users={users} newUser={newUser} onUpdateChange={ (userName) => dispatch(updateUser(userName)) } onAddClick={ (user) => dispatch(createUser(user)) } onRemoveClick={ (id) => dispatch(deleteUser(id)) } /> :
+          <UsersPicker users={users} newUser={newUser} onUpdateChange={ (userName) => dispatch(updateUser(userName)) } onAddClick={ (user) => dispatch(fetchAndCreateUser(user)) } onRemoveClick={ (id) => dispatch(deleteUser(id)) } /> :
           <span></span>
         }
         {contestTypeFilter === VisibilityFilters.SHOW_H2H ?

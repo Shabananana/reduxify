@@ -58,6 +58,18 @@ export function createUser(user) {
   };
 }
 
+export function fetchAndCreateUser(user) {
+  return function (dispatch) {
+    return fetch('http://www.reddit.com/r/hearthstone.json')
+      .then(req => req.json())
+      .then(json => {
+        const randomAuthor = json.data.children[Math.floor(Math.random() * json.data.children.length)].data.author;
+        const userData = { ...user, userName: `${user.userName} : Author retrieved:  ${randomAuthor}` };
+        dispatch(createUser(userData));
+      });
+  };
+}
+
 export function deleteUser(id) {
   return {
     type: types.DELETE_USER,
