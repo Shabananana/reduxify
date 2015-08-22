@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import * as actions from '../../common/actions/UgcActions';
 import * as types from '../../common/constants/ActionTypes';
 describe('actions', () => {
@@ -10,7 +10,7 @@ describe('actions', () => {
       id,
       quantity
     };
-    expect(actions.updateEntry(id, quantity)).toEqual(expectedAction);
+    expect(actions.updateEntry(id, quantity)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to update a league entry', () => {
@@ -24,7 +24,7 @@ describe('actions', () => {
       type: types.UPDATE_LEAGUE_ENTRY,
       leagueEntry
     };
-    expect(actions.updateLeagueEntry(leagueEntry)).toEqual(expectedAction);
+    expect(actions.updateLeagueEntry(leagueEntry)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to clear entries', () => {
@@ -33,7 +33,7 @@ describe('actions', () => {
       type: types.CLEAR_ENTRIES,
       sportId
     };
-    expect(actions.clearEntries(sportId)).toEqual(expectedAction);
+    expect(actions.clearEntries(sportId)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to switch sports', () => {
@@ -42,7 +42,7 @@ describe('actions', () => {
       type: types.SWITCH_SPORT,
       id
     };
-    expect(actions.switchSport(id)).toEqual(expectedAction);
+    expect(actions.switchSport(id)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to switch draftGroups', () => {
@@ -53,7 +53,7 @@ describe('actions', () => {
       id,
       sportId
     };
-    expect(actions.switchDraftGroup(id, sportId)).toEqual(expectedAction);
+    expect(actions.switchDraftGroup(id, sportId)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to switch contest types', () => {
@@ -62,7 +62,7 @@ describe('actions', () => {
       type: types.SWITCH_CONTEST_TYPE,
       contestType
     };
-    expect(actions.switchContestType(contestType)).toEqual(expectedAction);
+    expect(actions.switchContestType(contestType)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to switch access types', () => {
@@ -71,7 +71,7 @@ describe('actions', () => {
       type: types.SWITCH_ACCESS_TYPE,
       accessType
     };
-    expect(actions.switchAccessType(accessType)).toEqual(expectedAction);
+    expect(actions.switchAccessType(accessType)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to create a user', () => {
@@ -83,7 +83,7 @@ describe('actions', () => {
       type: types.CREATE_USER,
       user
     };
-    expect(actions.createUser(user)).toEqual(expectedAction);
+    expect(actions.createUser(user)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to receive users', () => {
@@ -130,8 +130,9 @@ describe('actions', () => {
       type: types.RECEIVE_USERS,
       users
     };
-    expect(actions.receiveUsers(json).users.length).toEqual(4);
-    expect(actions.receiveUsers(json).type).toEqual(types.RECEIVE_USERS);
+    const result = actions.receiveUsers(json);
+    expect(result).to.have.property('users').with.length(4);
+    expect(result).to.have.property('type').and.equal(types.RECEIVE_USERS);
   });
 
   it('should create an action to delete a user', () => {
@@ -140,7 +141,7 @@ describe('actions', () => {
       type: types.DELETE_USER,
       id
     };
-    expect(actions.deleteUser(id)).toEqual(expectedAction);
+    expect(actions.deleteUser(id)).to.deep.equal(expectedAction);
   });
 
   it('should create an action to update a user', () => {
@@ -149,6 +150,6 @@ describe('actions', () => {
       type: types.UPDATE_USER,
       userName
     };
-    expect(actions.updateUser(userName)).toEqual(expectedAction);
+    expect(actions.updateUser(userName)).to.deep.equal(expectedAction);
   });
 });

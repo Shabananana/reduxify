@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/entries';
 import * as types from '../../common/constants/ActionTypes';
 import { initialEntries } from '../../common/constants/InitialState';
@@ -7,7 +7,7 @@ describe('entries reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialEntries);
+    ).to.deep.equal(initialEntries);
   });
 
   it('should handle UPDATE_ENTRY', () => {
@@ -24,7 +24,7 @@ describe('entries reducer', () => {
         id,
         quantity
       })
-    ).toEqual(updatedState);
+    ).to.deep.equal(updatedState);
   });
 
   it('should handle CLEAR_ENTRIES', () => {
@@ -39,6 +39,6 @@ describe('entries reducer', () => {
         type: types.CLEAR_ENTRIES,
         sportId
       })
-    ).toEqual(updatedState);
+    ).to.deep.equal(updatedState);
   });
 });

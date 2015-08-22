@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/users';
 import * as types from '../../common/constants/ActionTypes';
 
@@ -8,7 +8,7 @@ describe('users reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialState);
+    ).to.deep.equal(initialState);
   });
 
   it('should handle CREATE_USER', () => {
@@ -22,7 +22,7 @@ describe('users reducer', () => {
         type: types.CREATE_USER,
         user
       })
-    ).toEqual(updatedState);
+    ).to.deep.equal(updatedState);
   });
 
   it('should handle DELETE_USER', () => {
@@ -37,6 +37,6 @@ describe('users reducer', () => {
         type: types.DELETE_USER,
         id
       })
-    ).toEqual(initialState);
+    ).to.deep.equal(initialState);
   });
 });

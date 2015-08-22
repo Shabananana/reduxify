@@ -1,7 +1,10 @@
-import expect from 'expect';
+import chai, { expect } from 'chai';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import EntryPicker from '../../common/containers/EntryPicker';
+chai.use(sinonChai);
 
 const { TestUtils } = React.addons;
 
@@ -23,8 +26,8 @@ function setup() {
         maxEntries: 50
       }
     ],
-    onUpdateChange: expect.createSpy(),
-    onClear: expect.createSpy()
+    onUpdateChange: spy(),
+    onClear: spy()
   };
 
   const renderedComponent = TestUtils.renderIntoDocument(
@@ -55,16 +58,16 @@ describe('components', () => {
     it('should render correctly', () => {
       const { props, h3 } = setup();
 
-      expect(h3.textContent).toBe('Entry Picker');
+      expect(h3.textContent).to.equal('Entry Picker');
     });
 
     it('should call onClear with sport id as a param when button is clicked', () => {
       const { props, button } = setup();
       const { sportId } = props.entries[0];
-      expect(props.onClear.calls.length).toBe(0);
+
+      expect(props.onClear).to.not.have.been.called;
       TestUtils.Simulate.click(button);
-      expect(props.onClear.calls.length).toBe(1);
-      expect(props.onClear.calls[0].arguments).toEqual([sportId]);
+      expect(props.onClear).to.have.been.calledWith(sportId);
     });
   });
 });

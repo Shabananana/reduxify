@@ -1,7 +1,10 @@
-import expect from 'expect';
+import chai, { expect } from 'chai';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import DrafGroup from '../../common/components/DraftGroup';
+chai.use(sinonChai);
 
 const { TestUtils } = React.addons;
 
@@ -13,7 +16,7 @@ function setup() {
       name: 'Test Draft Group 34343',
       selected: false
     },
-    onSwitchClick: expect.createSpy()
+    onSwitchClick: spy()
   };
 
   const renderedComponent = TestUtils.renderIntoDocument(
@@ -44,16 +47,15 @@ describe('components', () => {
     it('should render correctly', () => {
       const { props, li, span } = setup();
 
-      expect(li.getAttribute('class')).toBe('unselected');
-      expect(span.textContent).toBe(props.draftGroup.name);
+      expect(li.getAttribute('class')).to.equal('unselected');
+      expect(span.textContent).to.equal(props.draftGroup.name);
     });
 
     it('should call onSwitchClick with draftGroup id and sportId as params when clicked', () => {
       const { props, span } = setup();
-      expect(props.onSwitchClick.calls.length).toBe(0);
+      expect(props.onSwitchClick).to.not.have.been.called;
       TestUtils.Simulate.click(span);
-      expect(props.onSwitchClick.calls.length).toBe(1);
-      expect(props.onSwitchClick.calls[0].arguments).toEqual([props.draftGroup.id, props.draftGroup.sportId]);
+      expect(props.onSwitchClick).to.have.been.calledWith(props.draftGroup.id, props.draftGroup.sportId);
     });
   });
 });

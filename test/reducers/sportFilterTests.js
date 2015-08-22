@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/sportFilter';
 import * as types from '../../common/constants/ActionTypes';
 import { VisibilityFilters } from '../../common/constants/Filters';
@@ -12,18 +12,18 @@ describe('sportFilter reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialState);
+    ).to.deep.equal(initialState);
   });
 
   it('should handle SWITCH_SPORT', () => {
     const updatedState = SHOW_NBA;
     const id = 3;
-    expect(SportFilterMap[id]).toEqual(updatedState);
+    expect(SportFilterMap[id]).to.deep.equal(updatedState);
     expect(
       reducer(initialState, {
         type: types.SWITCH_SPORT,
         id
       })
-    ).toEqual(updatedState);
+    ).to.deep.equal(updatedState);
   });
 });

@@ -1,7 +1,10 @@
-import expect from 'expect';
+import chai, { expect } from 'chai';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import SportItem from '../../common/components/SportItem';
+chai.use(sinonChai);
 
 const { TestUtils } = React.addons;
 
@@ -12,7 +15,7 @@ function setup() {
       name: 'NBA',
       selected: false
     },
-    onSwitchClick: expect.createSpy()
+    onSwitchClick: spy()
   };
 
   const renderedComponent = TestUtils.renderIntoDocument(
@@ -43,16 +46,15 @@ describe('components', () => {
     it('should render correctly', () => {
       const { li, span } = setup();
 
-      expect(li.getAttribute('class')).toBe('unselected');
-      expect(span.textContent).toEqual('NBA');
+      expect(li.getAttribute('class')).to.equal('unselected');
+      expect(span.textContent).to.equal('NBA');
     });
 
     it('should call onSwitchClick with sportId as a param when clicked', () => {
       const { props, span } = setup();
-      expect(props.onSwitchClick.calls.length).toBe(0);
+      expect(props.onSwitchClick).to.have.not.been.called;
       TestUtils.Simulate.click(span);
-      expect(props.onSwitchClick.calls.length).toBe(1);
-      expect(props.onSwitchClick.calls[0].arguments).toEqual([props.sport.id]);
+      expect(props.onSwitchClick).to.have.been.calledWith(props.sport.id);
     });
   });
 });

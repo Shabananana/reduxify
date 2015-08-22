@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/leagueEntries';
 import * as types from '../../common/constants/ActionTypes';
 import { LeagueEntryPrizeStructures } from '../../common/constants/StaticData';
@@ -8,7 +8,7 @@ describe('leagueEntries reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialLeagueEntries);
+    ).to.deep.equal(initialLeagueEntries);
   });
 
   it('should handle UPDATE_LEAGUE_ENTRY', () => {
@@ -30,6 +30,6 @@ describe('leagueEntries reducer', () => {
         type: types.UPDATE_LEAGUE_ENTRY,
         leagueEntry
       })
-    ).toEqual(updatedState);
+    ).to.deep.equal(updatedState);
   });
 });

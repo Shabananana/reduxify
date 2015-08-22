@@ -1,7 +1,10 @@
-import expect from 'expect';
+import chai, { expect } from 'chai';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import EntryItem from '../../common/components/EntryItem';
+chai.use(sinonChai);
 
 const { TestUtils } = React.addons;
 
@@ -14,7 +17,7 @@ function setup() {
       price: 6.50,
       maxEntries: 50
     },
-    onUpdateChange: expect.createSpy()
+    onUpdateChange: spy()
   };
 
   const renderedComponent = TestUtils.renderIntoDocument(
@@ -39,33 +42,32 @@ describe('components', () => {
     it('should render correctly', () => {
       const { props, input } = setup();
 
-      expect(input.getAttribute('class')).toBe('unfilled');
-      expect(input.value).toBe(props.entry.quantity.toString());
+      expect(input.getAttribute('class')).to.equal('unfilled');
+      expect(input.value).to.equal(props.entry.quantity.toString());
     });
 
     it('should call onUpdateChange with entry id and the value as params when changed', () => {
       const { props, input } = setup();
       const value = 2;
-      expect(props.onUpdateChange.calls.length).toBe(0);
+      expect(props.onUpdateChange).to.not.have.been.called;
       TestUtils.Simulate.change(input, { target: { value: value } });
-      expect(props.onUpdateChange.calls.length).toBe(1);
-      expect(props.onUpdateChange.calls[0].arguments).toEqual([props.entry.id, value]);
+      expect(props.onUpdateChange).to.have.been.calledWith(props.entry.id, value);
     });
 
     it('should reject calls where the value exceeds the max quantity', () => {
       const { props, input } = setup();
       const value = 78;
-      expect(props.onUpdateChange.calls.length).toBe(0);
+      expect(props.onUpdateChange).to.not.have.been.called;
       TestUtils.Simulate.change(input, { target: { value: value } });
-      expect(props.onUpdateChange.calls.length).toBe(0);
+      expect(props.onUpdateChange).to.not.have.been.called;
     });
 
     it('should reject calls where the value cannot be parsed to an int', () => {
       const { props, input } = setup();
       const value = 'ef';
-      expect(props.onUpdateChange.calls.length).toBe(0);
+      expect(props.onUpdateChange).to.not.have.been.called;
       TestUtils.Simulate.change(input, { target: { value: value } });
-      expect(props.onUpdateChange.calls.length).toBe(0);
+      expect(props.onUpdateChange).to.not.have.been.called;
     });
   });
 });

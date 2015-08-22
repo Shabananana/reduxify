@@ -1,9 +1,11 @@
-import expect from 'expect';
+import chai, { expect } from 'chai';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import ContestType from '../../common/components/ContestType';
 import { VisibilityFilters } from '../../common/constants/Filters';
-
+chai.use(sinonChai);
 
 const { TestUtils } = React.addons;
 
@@ -13,7 +15,7 @@ describe('components', () => {
   function setup() {
     const props = {
       contestType: VisibilityFilters.SHOW_H2H,
-      onSwitchClick: expect.createSpy()
+      onSwitchClick: spy()
     };
 
     const renderedComponent = TestUtils.renderIntoDocument(
@@ -43,19 +45,18 @@ describe('components', () => {
   describe('ContestType', () => {
     it('should render correctly', () => {
       const { headToHeadListElement, leagueListElement } = setup();
-      expect(headToHeadListElement.getAttribute('class')).toBe('selected');
-      expect(leagueListElement.getAttribute('class')).toBe('unselected');
+      expect(headToHeadListElement.getAttribute('class')).to.equal('selected');
+      expect(leagueListElement.getAttribute('class')).to.equal('unselected');
     });
 
     it('calls onSwitchClick with contest type provided when clicked', () => {
       const { props, headToHeadspanElement, leagueSpanElement } = setup();
-      expect(props.onSwitchClick.calls.length).toBe(0);
+      expect(props.onSwitchClick).to.have.not.been.called;
       TestUtils.Simulate.click(leagueSpanElement);
-      expect(props.onSwitchClick.calls.length).toBe(1);
-      expect(props.onSwitchClick.calls[0].arguments).toEqual([VisibilityFilters.SHOW_LEAGUE]);
+      expect(props.onSwitchClick).to.have.been.calledWith(VisibilityFilters.SHOW_LEAGUE);
       TestUtils.Simulate.click(headToHeadspanElement);
-      expect(props.onSwitchClick.calls.length).toBe(2);
-      expect(props.onSwitchClick.calls[1].arguments).toEqual([VisibilityFilters.SHOW_H2H]);
+      expect(props.onSwitchClick).to.have.been.calledTwice;
+      expect(props.onSwitchClick).to.have.been.calledWith(VisibilityFilters.SHOW_H2H);
     });
   });
 });

@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/contestTypeFilter';
 import * as types from '../../common/constants/ActionTypes';
 import { VisibilityFilters } from '../../common/constants/Filters';
@@ -10,7 +10,7 @@ describe('contestTypeFilter reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialState);
+    ).to.deep.equal(initialState);
   });
 
   it('should handle SWITCH_CONTEST_TYPE', () => {
@@ -20,6 +20,6 @@ describe('contestTypeFilter reducer', () => {
         type: types.SWITCH_CONTEST_TYPE,
         contestType
       })
-    ).toEqual(contestType);
+    ).to.deep.equal(contestType);
   });
 });

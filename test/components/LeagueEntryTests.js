@@ -1,8 +1,11 @@
-import expect from 'expect';
+import chai, { expect } from 'chai';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import LeagueEntry from '../../common/components/LeagueEntry';
 import { LeagueEntryPrizeStructures, LeagueEntrySizes } from '../../common/constants/StaticData';
+chai.use(sinonChai);
 
 const { TestUtils } = React.addons;
 
@@ -31,7 +34,7 @@ function setup() {
         maxEntries: 50
       }
     ],
-    onUpdateChange: expect.createSpy()
+    onUpdateChange: spy()
   };
 
   const renderedComponent = TestUtils.renderIntoDocument(
@@ -71,11 +74,10 @@ describe('components', () => {
     it('should render correctly', () => {
       const { props, h3, sizeSelectList, priceSelectList, prizeTypeSelectList } = setup();
 
-      expect(h3.textContent).toBe('League Entry Picker');
-      expect(sizeSelectList.value).toBe(props.leagueEntry.size.toString());
-      expect(priceSelectList.value).toBe(props.leagueEntry.price.toString());
-      expect(prizeTypeSelectList.value).toBe(props.leagueEntry.prizeStructure);
-
+      expect(h3.textContent).to.equal('League Entry Picker');
+      expect(sizeSelectList.value).to.equal(props.leagueEntry.size.toString());
+      expect(priceSelectList.value).to.equal(props.leagueEntry.price.toString());
+      expect(prizeTypeSelectList.value).to.equal(props.leagueEntry.prizeStructure);
     });
   });
 });

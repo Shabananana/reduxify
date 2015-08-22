@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/accessTypeFilter';
 import * as types from '../../common/constants/ActionTypes';
 import { VisibilityFilters } from '../../common/constants/Filters';
@@ -10,7 +10,7 @@ describe('accessTypeFilter reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialState);
+    ).to.deep.equal(initialState);
   });
 
   it('should handle SWITCH_ACCESS_TYPE', () => {
@@ -20,6 +20,6 @@ describe('accessTypeFilter reducer', () => {
         type: types.SWITCH_ACCESS_TYPE,
         accessType
       })
-    ).toEqual(accessType);
+    ).to.deep.equal(accessType);
   });
 });

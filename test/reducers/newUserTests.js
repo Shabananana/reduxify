@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/newUser';
 import * as types from '../../common/constants/ActionTypes';
 import { initialUser } from '../../common/constants/InitialState';
@@ -7,7 +7,7 @@ describe('newUser reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialUser);
+    ).to.deep.equal(initialUser);
   });
 
   it('should handle CREATE_USER', () => {
@@ -20,7 +20,7 @@ describe('newUser reducer', () => {
         type: types.CREATE_USER,
         user
       })
-    ).toEqual(initialUser);
+    ).to.deep.equal(initialUser);
   });
 
   it('should handle UPDATE_USER', () => {
@@ -31,6 +31,6 @@ describe('newUser reducer', () => {
         type: types.UPDATE_USER,
         userName
       })
-    ).toEqual(updatedState);
+    ).to.deep.equal(updatedState);
   });
 });

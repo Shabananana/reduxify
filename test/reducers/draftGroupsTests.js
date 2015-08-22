@@ -1,4 +1,4 @@
-import expect from 'expect';
+import { expect } from 'chai';
 import reducer from '../../common/reducers/draftGroups';
 import * as types from '../../common/constants/ActionTypes';
 import { initialDraftGroups } from '../../common/constants/InitialState';
@@ -7,7 +7,7 @@ describe('draftGroups reducer', () => {
   it('should return the initial state', () => {
     expect(
       reducer(undefined, {})
-    ).toEqual(initialDraftGroups);
+    ).to.deep.equal(initialDraftGroups);
   });
 
   it('should handle SWITCH_DRAFTGROUP', () => {
@@ -27,6 +27,6 @@ describe('draftGroups reducer', () => {
         id,
         sportId
       })
-    ).toEqual(updatedState);
+    ).to.deep.equal(updatedState);
   });
 });

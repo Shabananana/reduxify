@@ -1,9 +1,11 @@
-import expect from 'expect';
+import chai, { expect } from 'chai';
+import { spy } from 'sinon';
+import sinonChai from 'sinon-chai';
 import jsDomSetUp from '../utils/jsDomSetUp';
 import React from 'react/addons';
 import AccessType from '../../common/components/AccessType';
 import { VisibilityFilters } from '../../common/constants/Filters';
-
+chai.use(sinonChai);
 
 const { TestUtils } = React.addons;
 
@@ -13,7 +15,7 @@ describe('components', () => {
   function setup() {
     const props = {
       accessType: VisibilityFilters.SHOW_PUBLIC,
-      onSwitchClick: expect.createSpy()
+      onSwitchClick: spy()
     };
 
     const renderedComponent = TestUtils.renderIntoDocument(
@@ -43,19 +45,18 @@ describe('components', () => {
   describe('AccessType', () => {
     it('should render correctly', () => {
       const { privateListElement, publicListElement } = setup();
-      expect(privateListElement.getAttribute('class')).toBe('unselected');
-      expect(publicListElement.getAttribute('class')).toBe('selected');
+      expect(privateListElement.getAttribute('class')).to.equal('unselected');
+      expect(publicListElement.getAttribute('class')).to.equal('selected');
     });
 
     it('calls onSwitchClick with access type provided when clicked', () => {
       const { props, privateSpanElement, publicSpanElement } = setup();
-      expect(props.onSwitchClick.calls.length).toBe(0);
+      expect(props.onSwitchClick).to.have.not.been.called;
       TestUtils.Simulate.click(privateSpanElement);
-      expect(props.onSwitchClick.calls.length).toBe(1);
-      expect(props.onSwitchClick.calls[0].arguments).toEqual([VisibilityFilters.SHOW_PRIVATE]);
+      expect(props.onSwitchClick).to.have.been.calledWith(VisibilityFilters.SHOW_PRIVATE)
       TestUtils.Simulate.click(publicSpanElement);
-      expect(props.onSwitchClick.calls.length).toBe(2);
-      expect(props.onSwitchClick.calls[1].arguments).toEqual([VisibilityFilters.SHOW_PUBLIC]);
+      expect(props.onSwitchClick).to.have.been.calledTwice;
+      expect(props.onSwitchClick).to.have.been.calledWith(VisibilityFilters.SHOW_PUBLIC);
     });
   });
 });
