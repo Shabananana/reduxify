@@ -1,21 +1,25 @@
 import React, { Component, PropTypes } from 'react';
 
-export default class SportItem extends Component {
+export default class UserItem extends Component {
   static propTypes = {
     user: React.PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       userName: PropTypes.string.isRequired
     }),
-    onRemoveClick: PropTypes.func.isRequired
+    onRemoveClick: PropTypes.func,
+    onAddClick: PropTypes.func
   }
 
   render() {
-    const { user, onRemoveClick } = this.props;
+    const { user, onRemoveClick, onAddClick } = this.props;
 
     return (
       <li>
         <span>{user.userName}</span>
-        <button onClick={ () => onRemoveClick(user.id) }>Remove User</button>
+        {onRemoveClick !== undefined ?
+          <button onClick={ () => onRemoveClick(user.id) }>Remove User</button> :
+          <button onClick={ () => onAddClick(user) }>Add User</button>
+        }
       </li>
     );
   }

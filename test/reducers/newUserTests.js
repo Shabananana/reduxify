@@ -12,7 +12,6 @@ describe('newUser reducer', () => {
 
   it('should handle CREATE_USER', () => {
     const user = {
-      id: 2,
       userName: 'FakeShabananana'
     };
     const updatedState = [...initialUser, user];

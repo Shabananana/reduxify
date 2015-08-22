@@ -19,7 +19,6 @@ export const initialSports = [
 ];
 
 export const initialUser = {
-  id: 0,
   userName: ''
 };
 

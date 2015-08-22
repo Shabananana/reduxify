@@ -8,7 +8,7 @@ const { TestUtils } = React.addons;
 function setup() {
   const props = {
     user: {
-      id: 3,
+      id: 'h3Er_fe',
       userName: 'Shabananana'
     },
     onRemoveClick: expect.createSpy()

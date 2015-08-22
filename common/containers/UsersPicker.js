@@ -6,7 +6,6 @@ export default class UsersPicker extends Component {
     users: PropTypes.array.isRequired,
     searchedUsers: PropTypes.array.isRequired,
     newUser: PropTypes.shape({
-      id: PropTypes.number.isRequired,
       userName: PropTypes.string.isRequired
     }),
     onAddClick: PropTypes.func.isRequired,
@@ -17,14 +16,6 @@ export default class UsersPicker extends Component {
 
   constructor(props, context) {
     super(props, context);
-  }
-
-  addUser = (e) => {
-    const { newUser, users, onAddClick } = this.props;
-
-    if(newUser.userName.trim()) {
-      onAddClick({ id: (users.length + 1), userName: newUser.userName });
-    }
   }
 
   render() {
@@ -38,12 +29,22 @@ export default class UsersPicker extends Component {
           <input type="text" value={newUser.userName} onChange={ (e) => fetchUsers(e.target.value) }/>
           <strong>Search for User</strong>
         </div>
-        <div>
-          {searchedUsers.map(searchedUser => <p key={searchedUser.userName}>{searchedUser.userName}</p>)}
-        </div>
-        <ul>
-          {users.map(user => <UserItem key={user.id} user={user} onRemoveClick={onRemoveClick} />)}
-        </ul>
+        {searchedUsers.length ?
+          <div>
+            <p>Search Results</p>
+            {searchedUsers.map(searchedUser => <UserItem key={searchedUser.id} user={searchedUser} onAddClick={onAddClick} />)}
+          </div> :
+          null
+        }
+        {users.length ?
+          <div>
+            <p>Added Users</p>
+            <ul>
+              {users.map(user => <UserItem key={user.id} user={user} onRemoveClick={onRemoveClick} />)}
+            </ul>
+          </div> :
+          null
+        }
       </div>
     );
   }
