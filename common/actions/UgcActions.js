@@ -1,4 +1,6 @@
 import * as types from '../constants/ActionTypes';
+import fetch from 'isomorphic-fetch';
+import _ from 'lodash';
 
 export function updateEntry(id, quantity) {
   return {
@@ -58,15 +60,31 @@ export function createUser(user) {
   };
 }
 
-export function fetchAndCreateUser(user) {
-  return function (dispatch) {
-    return fetch('http://www.reddit.com/r/hearthstone.json')
-      .then(req => req.json())
-      .then(json => {
-        const randomAuthor = json.data.children[Math.floor(Math.random() * json.data.children.length)].data.author;
-        const userData = { ...user, userName: `${user.userName} : Author retrieved:  ${randomAuthor}` };
-        dispatch(createUser(userData));
-      });
+export function requestUsers(user) {
+  return {
+    type: types.REQUEST_USERS,
+    user
+  };
+}
+
+export function receiveUsers(userName, json) {
+  return {
+    type: types.RECEIVE_USERS,
+    userName,
+    users: _.shuffle(json.data.children).slice(0, 4).map(child => { return { id: child.data.id, userName: child.data.author } }),
+    receivedAt: Date.now()
+  };
+}
+
+export function fetchUsers(userName) {
+  return dispatch => {
+    dispatch(updateUser(userName))
+    if(userName.trim().length > 2) {
+      dispatch(requestUsers(userName));
+      return fetch('http://www.reddit.com/r/hearthstone.json')
+        .then(req => req.json())
+        .then(json => dispatch(receiveUsers(userName, json)));
+    }
   };
 }
 

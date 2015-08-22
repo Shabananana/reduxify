@@ -8,3 +8,5 @@ export const SWITCH_ACCESS_TYPE = 'SWITCH_ACCESS_TYPE';
 export const CREATE_USER = 'CREATE_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const UPDATE_USER = 'UPDATE_USER';
+export const REQUEST_USERS = 'REQUEST_USERS';
+export const RECEIVE_USERS = 'RECEIVE_USERS';

@@ -7,3 +7,4 @@ export { default as accessTypeFilter } from './accessTypeFilter';
 export { default as leagueEntries } from './leagueEntries';
 export { default as users } from './users';
 export { default as newUser } from './newUser';
+export { default as searchedUsers } from './searchedUsers';

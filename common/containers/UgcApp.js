@@ -8,8 +8,7 @@ import LeagueEntry from '../components/LeagueEntry';
 import ContestType from '../components/ContestType';
 import AccessType from '../components/AccessType';
 import { VisibilityFilters } from '../constants/Filters';
-//import { ugcSelector } from '../selectors/UgcSelectors';
-import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, updateUser, fetchAndCreateUser, deleteUser } from '../actions/UgcActions';
+import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, updateUser, fetchAndCreateUser, fetchUsers, deleteUser } from '../actions/UgcActions';
 
 class UgcApp extends Component {
   static propTypes = {
@@ -18,6 +17,7 @@ class UgcApp extends Component {
     entries: PropTypes.array.isRequired,
     leagueEntry: PropTypes.object.isRequired,
     users: PropTypes.array.isRequired,
+    searchedUsers: PropTypes.array.isRequired,
     sportFilter: PropTypes.oneOf([
       'SHOW_NFL',
       'SHOW_MLB',
@@ -45,7 +45,7 @@ class UgcApp extends Component {
   }
 
   render() {
-    const { sports, draftGroups, entries, users, newUser, leagueEntry, sportFilter, contestTypeFilter, accessTypeFilter, dispatch } = this.props;
+    const { sports, draftGroups, entries, users, searchedUsers, newUser, leagueEntry, sportFilter, contestTypeFilter, accessTypeFilter, dispatch } = this.props;
     return (
       <div>
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
@@ -53,7 +53,7 @@ class UgcApp extends Component {
         <ContestType contestType={contestTypeFilter} onSwitchClick={ (contestType) => dispatch(switchContestType(contestType)) } />
         <AccessType accessType={accessTypeFilter} onSwitchClick={ (accessType) => dispatch(switchAccessType(accessType)) } />
         {accessTypeFilter === VisibilityFilters.SHOW_PRIVATE ?
-          <UsersPicker users={users} newUser={newUser} onUpdateChange={ (userName) => dispatch(updateUser(userName)) } onAddClick={ (user) => dispatch(fetchAndCreateUser(user)) } onRemoveClick={ (id) => dispatch(deleteUser(id)) } /> :
+          <UsersPicker users={users} searchedUsers={searchedUsers} newUser={newUser} fetchUsers={ (userName) => dispatch(fetchUsers(userName)) } onUpdateChange={ (userName) => dispatch(updateUser(userName)) } onAddClick={ (user) => dispatch(fetchAndCreateUser(user)) } onRemoveClick={ (id) => dispatch(deleteUser(id)) } /> :
           <span></span>
         }
         {contestTypeFilter === VisibilityFilters.SHOW_H2H ?
@@ -83,6 +83,7 @@ function select(state) {
     draftGroups: selectBySport(state.draftGroups, state.sportFilter),
     entries: selectBySport(state.entries, state.sportFilter),
     users: state.users,
+    searchedUsers: state.searchedUsers,
     newUser: state.newUser,
     leagueEntry: selectBySport(state.leagueEntries, state.sportFilter)[0],
     sportFilter: state.sportFilter,
