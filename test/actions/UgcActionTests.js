@@ -76,7 +76,7 @@ describe('actions', () => {
 
   it('should create an action to create a user', () => {
     const user = {
-      id: 5,
+      id: 'awef_f$',
       userName: 'Test User 5'
     };
     const expectedAction = {
@@ -84,6 +84,54 @@ describe('actions', () => {
       user
     };
     expect(actions.createUser(user)).toEqual(expectedAction);
+  });
+
+  it('should create an action to receive users', () => {
+    //mock formatted data as Reddit API returns
+    const users = [
+      { data:
+        {
+          id: 'a',
+          author: 'Test User 1'
+        }
+      },
+      { data:
+        {
+          id: 'b',
+          author: 'Test User 2'
+        }
+      },
+      { data:
+        {
+          id: 'c',
+          author: 'Test User 3'
+        }
+      },
+      {
+        data: {
+          id: 'd',
+          author: 'Test User 4'
+        }
+      },
+      {
+        data: {
+          id: 'e',
+          author: 'Test User 5'
+        }
+      }
+    ];
+    const json = {
+      data: {
+        children: [ ...users ]
+      }
+    };
+
+    const expectedAction = {
+      type: types.RECEIVE_USERS,
+      users
+    };
+    expect(actions.receiveUsers(json).users.length).toEqual(4);
+    expect(actions.receiveUsers(json).type).toEqual(types.RECEIVE_USERS);
   });
 
   it('should create an action to delete a user', () => {

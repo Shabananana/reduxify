@@ -60,19 +60,10 @@ export function createUser(user) {
   };
 }
 
-export function requestUsers(user) {
-  return {
-    type: types.REQUEST_USERS,
-    user
-  };
-}
-
-export function receiveUsers(userName, json) {
+export function receiveUsers(json) {
   return {
     type: types.RECEIVE_USERS,
-    userName,
-    users: _.shuffle(json.data.children).slice(0, 4).map(child => { return { id: child.data.id, userName: child.data.author } }),
-    receivedAt: Date.now()
+    users: _.shuffle(json.data.children).slice(0, 4).map(child => { return { id: child.data.id, userName: child.data.author } })
   };
 }
 
@@ -80,10 +71,9 @@ export function fetchUsers(userName) {
   return dispatch => {
     dispatch(updateUser(userName))
     if(userName.trim().length > 2) {
-      dispatch(requestUsers(userName));
       return fetch('http://www.reddit.com/r/hearthstone.json')
         .then(req => req.json())
-        .then(json => dispatch(receiveUsers(userName, json)));
+        .then(json => dispatch(receiveUsers(json)));
     }
   };
 }
