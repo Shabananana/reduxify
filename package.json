@@ -4,7 +4,8 @@
   "description": "ugc test with redux",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel/register --recursive"
+    "test": "mocha --compilers js:babel/register --recursive",
+    "iso": "babel-node --stage 0 -- hapi-server.js"
   },
   "author": "Shabananana",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "gulp-install": "^0.4.0",
     "gulp-lab": "^1.0.5",
     "gulp-shell": "^0.4.2",
+    "hapi": "~8.2.0",
     "immutable": "^3.7.2",
     "isomorphic-fetch": "^2.1.1",
     "lodash": "~3.8.0",
