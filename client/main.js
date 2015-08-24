@@ -1,17 +1,8 @@
 import React from 'react';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { Provider } from 'react-redux';
-import UgcApp from '../common/containers/UgcApp';
-import * as reducers from '../common/reducers';
-
-const ugcApp = combineReducers(reducers);
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-const store = createStoreWithMiddleware(ugcApp);
+import Root from '../common/containers/Root';
+import BrowserHistory from 'react-router/lib/BrowserHistory';
 
 React.render(
-  <Provider store={store}>
-    {() => <UgcApp />}
-  </Provider>,
+  <Root history={new BrowserHistory()} />,
   document.getElementById('root')
 );

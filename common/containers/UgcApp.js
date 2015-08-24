@@ -40,12 +40,22 @@ class UgcApp extends Component {
       entries: entries.filter(entry => entry.quantity > 0),
       draftGroupId: draftGroups.filter(draftGroup => draftGroup.selected)[0].id
     };
-    console.log(formattedData);
+    console.log('*****');
+    console.log('submission...');
+    console.dir(formattedData);
+    console.log('*****');
     dispatch(clearEntries(formattedData.sportId));
   }
 
   render() {
     const { sports, draftGroups, entries, users, searchedUsers, newUser, leagueEntry, sportFilter, contestTypeFilter, accessTypeFilter, dispatch } = this.props;
+
+    const { props } = this;
+    console.log('*****');
+    console.log('props coming in...')
+    console.dir(props);
+    console.log('*****');
+
     return (
       <div>
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
