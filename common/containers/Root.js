@@ -19,7 +19,7 @@ export default class Root extends Component {
           {() =>
             <Router history={this.props.history}>
               <Route path='/' component={UgcApp} />
-              <Route path='/test' component={ExampleRouteComponent} />
+              <Route path='test' component={ExampleRouteComponent} />
             </Router>
           }
         </Provider>

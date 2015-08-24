@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import SportPicker from './SportPicker';
 import DraftGroupPicker from './DraftGroupPicker';
 import EntryPicker from './EntryPicker';
@@ -58,6 +59,7 @@ class UgcApp extends Component {
 
     return (
       <div>
+        <Link to="test">Go to ExampleRouteComponent! (Your state will be preserved if this link is clicked to navigate :X)</Link>
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
         <DraftGroupPicker draftGroups={draftGroups} onSwitchClick={ (id, sportId) => dispatch(switchDraftGroup(id, sportId)) } />
         <ContestType contestType={contestTypeFilter} onSwitchClick={ (contestType) => dispatch(switchContestType(contestType)) } />
