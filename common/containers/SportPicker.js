@@ -25,4 +25,4 @@ export default class SportPicker extends Component {
       </div>
     );
   }
-};
+}
