@@ -3,5 +3,15 @@
 to work...
   - clone repo
   - npm install
-  - npm start
-  - localhost:3000
+
+  * clientside only with react-hot-loader
+    - npm start
+    - localhost:3000
+
+  * isomorphic with hapi
+    - gulp webpack
+    - npm run iso
+    - localhost:9000
+
+to test...
+  - npm test

@@ -3,11 +3,6 @@ import { Link } from 'react-router';
 
 export default class ExampleRouteComponent extends Component {
   render() {
-    const { props } = this;
-    console.log('*****');
-    console.log('props coming in...')
-    console.dir(props);
-    console.log('*****');
     return (
       <div>
         <Link to="/">Go to the UgcApp!</Link>

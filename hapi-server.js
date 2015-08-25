@@ -10,7 +10,7 @@ server.connection({ port: 9000 });
 
 server.route({
     method: 'GET',
-    path: '/dist/{filename}',
+    path: '/static/{filename}',
     handler: function (request, reply) {
         reply.file('./dist/' + request.params.filename);
     }
@@ -20,8 +20,9 @@ server.route({
     method: 'GET',
     path: '/{path*}',
     handler: function (request, reply) {
+      const baseRoute = request.params.path || '/';
       const html = React.renderToString(
-        <Root history={new MemoryHistory([ 'test', '/' ])} />
+        <Root history={new MemoryHistory([ baseRoute ])} />
       );
       reply(renderFullPage(html, null));
     }
@@ -47,7 +48,7 @@ function renderFullPage(html, initialData) {
               <script>
                 __INITIAL_DATA__ = ${JSON.stringify(initialData)};
               </script>
-              <script src="./dist/bundle.js"></script>
+              <script src="./static/bundle.js"></script>
             </body>
           </html>`
 }

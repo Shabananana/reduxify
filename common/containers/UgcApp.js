@@ -51,15 +51,9 @@ class UgcApp extends Component {
   render() {
     const { sports, draftGroups, entries, users, searchedUsers, newUser, leagueEntry, sportFilter, contestTypeFilter, accessTypeFilter, dispatch } = this.props;
 
-    const { props } = this;
-    console.log('*****');
-    console.log('props coming in...')
-    console.dir(props);
-    console.log('*****');
-
     return (
       <div>
-        <Link to="test">Go to ExampleRouteComponent! (Your state will be preserved if this link is clicked to navigate :X)</Link>
+        <Link to="test">Go to ExampleRouteComponent!</Link>
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
         <DraftGroupPicker draftGroups={draftGroups} onSwitchClick={ (id, sportId) => dispatch(switchDraftGroup(id, sportId)) } />
         <ContestType contestType={contestTypeFilter} onSwitchClick={ (contestType) => dispatch(switchContestType(contestType)) } />
