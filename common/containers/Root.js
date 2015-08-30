@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { Router, Route } from 'react-router';
 import UgcApp from './UgcApp';
+import UgcApp_copy from './UgcApp_copy';
 import ExampleRouteComponent from '../components/ExampleRouteComponent';
 import * as reducers from '../reducers';
 
@@ -19,6 +20,7 @@ export default class Root extends Component {
           {() =>
             <Router history={this.props.history}>
               <Route path='/' component={UgcApp} />
+              <Route path='smartTest' component={UgcApp_copy} />
               <Route path='test' component={ExampleRouteComponent} />
             </Router>
           }

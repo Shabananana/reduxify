@@ -9,3 +9,15 @@ export const CREATE_USER = 'CREATE_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const RECEIVE_USERS = 'RECEIVE_USERS';
+
+export const UPDATE_ENTRY_copy = 'UPDATE_ENTRY_copy';
+export const UPDATE_LEAGUE_ENTRY_copy = 'UPDATE_LEAGUE_ENTRY_copy';
+export const CLEAR_ENTRIES_copy = 'CLEAR_ENTRIES_copy';
+export const SWITCH_SPORT_copy = 'SWITCH_SPORT_copy';
+export const SWITCH_DRAFTGROUP_copy = 'SWITCH_DRAFTGROUP_copy';
+export const SWITCH_CONTEST_TYPE_copy = 'SWITCH_CONTEST_TYPE_copy';
+export const SWITCH_ACCESS_TYPE_copy = 'SWITCH_ACCESS_TYPE_copy';
+export const CREATE_USER_copy = 'CREATE_USER_copy';
+export const DELETE_USER_copy = 'DELETE_USER_copy';
+export const UPDATE_USER_copy = 'UPDATE_USER_copy';
+export const RECEIVE_USERS_copy = 'RECEIVE_USERS_copy';

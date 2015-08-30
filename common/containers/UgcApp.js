@@ -53,7 +53,8 @@ class UgcApp extends Component {
 
     return (
       <div>
-        <Link to="test">Go to ExampleRouteComponent!</Link>
+        <Link to='test'>Go to ExampleRouteComponent!</Link>
+        <Link to='smartTest'> Go to UGC App Duplicate</Link>
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
         <DraftGroupPicker draftGroups={draftGroups} onSwitchClick={ (id, sportId) => dispatch(switchDraftGroup(id, sportId)) } />
         <ContestType contestType={contestTypeFilter} onSwitchClick={ (contestType) => dispatch(switchContestType(contestType)) } />
