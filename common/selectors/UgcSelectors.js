@@ -17,7 +17,8 @@ const entriesSelector = (state) => state.entries;
 const draftGroupsSelector = (state) => state.draftGroups;
 const usersSelector = (state) => state.users;
 const newUserSelector = (state) => state.newUser;
-const leagueEntrySelector = (state) => state.leagueEntry;
+const searchedUsersSelector = (state) => state.searchedUsers;
+const leagueEntriesSelector = (state) => state.leagueEntries;
 const sportFilterSelector = (state) => state.sportFilter;
 const contestTypeFilterSelector = (state) => state.contestTypeFilter;
 const accessTypeFilterSelector = (state) => state.accessTypeFilter;
@@ -28,11 +29,12 @@ export const ugcSelector = createSelector(
     draftGroupsSelector,
     usersSelector,
     newUserSelector,
-    leagueEntrySelector,
+    searchedUsersSelector,
+    leagueEntriesSelector,
     sportFilterSelector,
     contestTypeFilterSelector,
     accessTypeFilterSelector],
-  (sports, entries, draftGroups, users, newUser, leagueEntry, sportFilter, contestTypeFilter, accessTypeFilter) => {
+  (sports, entries, draftGroups, users, newUser, searchedUsers, leagueEntries, sportFilter, contestTypeFilter, accessTypeFilter) => {
     return {
       sports,
       entries: selectBySport(entries, sportFilter),
@@ -40,7 +42,8 @@ export const ugcSelector = createSelector(
       sportFilter,
       users,
       newUser,
-      leagueEntry,
+      searchedUsers,
+      leagueEntry: selectBySport(leagueEntries, sportFilter)[0],
       contestTypeFilter,
       accessTypeFilter,
     };

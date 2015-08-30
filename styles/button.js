@@ -27,7 +27,7 @@ export const styles = {
     },
 
     ':focus': {
-      backgroundColor: 'lightorchid'
+      backgroundColor: 'purple'
     },
 
     ':active': {
