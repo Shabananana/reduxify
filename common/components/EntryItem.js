@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import Radium from 'radium';
+import { styles } from '../../styles/input';
 
+@Radium
 export default class EntryItem extends Component {
   static propTypes = {
     entry: PropTypes.shape({
@@ -30,7 +33,7 @@ export default class EntryItem extends Component {
     return (
       <li>
         <span>{`Id: ${entry.id} - SportId: ${entry.sportId} Quantity: ${entry.quantity} Price: $${entry.price} `}</span>
-        <input type='number' className={maxEntriesReached ? 'filled' : 'unfilled'} value={entry.quantity} onChange={this.handleUpdate} />
+        <input type='number' style={[styles.base, maxEntriesReached && styles.filled]} value={entry.quantity} onChange={this.handleUpdate} />
       </li>
     );
   }

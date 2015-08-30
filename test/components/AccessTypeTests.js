@@ -45,8 +45,6 @@ describe('components', () => {
   describe('AccessType', () => {
     it('should render correctly', () => {
       const { privateListElement, publicListElement } = setup();
-      expect(privateListElement.getAttribute('class')).to.equal('unselected');
-      expect(publicListElement.getAttribute('class')).to.equal('selected');
     });
 
     it('calls onSwitchClick with access type provided when clicked', () => {

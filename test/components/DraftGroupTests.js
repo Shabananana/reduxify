@@ -45,9 +45,8 @@ describe('components', () => {
   jsDomSetUp();
   describe('DraftGroup', () => {
     it('should render correctly', () => {
-      const { props, li, span } = setup();
+      const { props, span } = setup();
 
-      expect(li.getAttribute('class')).to.equal('unselected');
       expect(span.textContent).to.equal(props.draftGroup.name);
     });
 

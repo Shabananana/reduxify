@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { VisibilityFilters } from '../constants/Filters';
+import Radium from 'radium';
+import { styles } from '../../styles/listItem';
 
+@Radium
 export default class AccessType extends Component {
   static propTypes = {
     accessType: PropTypes.oneOf([
@@ -21,10 +24,10 @@ export default class AccessType extends Component {
       <div>
         <h3>Access Type Picker</h3>
         <ul>
-          <li className={accessType === VisibilityFilters.SHOW_PRIVATE ? 'selected' : 'unselected'}>
+          <li style={[styles.base, accessType === VisibilityFilters.SHOW_PRIVATE && styles.selected]}>
             <span onClick={() => onSwitchClick(VisibilityFilters.SHOW_PRIVATE)}>Private</span>
           </li>
-          <li className={accessType === VisibilityFilters.SHOW_PUBLIC ? 'selected' : 'unselected'}>
+          <li style={[styles.base, accessType === VisibilityFilters.SHOW_PUBLIC && styles.selected]}>
             <span onClick={() => onSwitchClick(VisibilityFilters.SHOW_PUBLIC)} >Public</span>
           </li>
         </ul>

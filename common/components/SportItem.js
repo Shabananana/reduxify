@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import Radium from 'radium';
+import { styles } from '../../styles/listItem';
 
+@Radium
 export default class SportItem extends Component {
   static propTypes = {
     sport: React.PropTypes.shape({
@@ -18,7 +21,7 @@ export default class SportItem extends Component {
     const { sport, onSwitchClick } = this.props;
 
     return (
-      <li className={(sport.selected ? 'selected' : 'unselected')} onClick={() => onSwitchClick(sport.id)}>
+      <li style={[styles.base, sport.selected && styles.selected]} onClick={() => onSwitchClick(sport.id)}>
         <span>{sport.name}</span>
       </li>
     );

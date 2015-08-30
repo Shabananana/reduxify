@@ -44,9 +44,8 @@ describe('components', () => {
   jsDomSetUp();
   describe('SportItem', () => {
     it('should render correctly', () => {
-      const { li, span } = setup();
+      const { span } = setup();
 
-      expect(li.getAttribute('class')).to.equal('unselected');
       expect(span.textContent).to.equal('NBA');
     });
 

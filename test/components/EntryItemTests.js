@@ -42,7 +42,6 @@ describe('components', () => {
     it('should render correctly', () => {
       const { props, input } = setup();
 
-      expect(input.getAttribute('class')).to.equal('unfilled');
       expect(input.value).to.equal(props.entry.quantity.toString());
     });
 

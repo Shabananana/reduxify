@@ -45,8 +45,6 @@ describe('components', () => {
   describe('ContestType', () => {
     it('should render correctly', () => {
       const { headToHeadListElement, leagueListElement } = setup();
-      expect(headToHeadListElement.getAttribute('class')).to.equal('selected');
-      expect(leagueListElement.getAttribute('class')).to.equal('unselected');
     });
 
     it('calls onSwitchClick with contest type provided when clicked', () => {

@@ -1,5 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import Radium from 'radium';
+import { styles } from '../../styles/button';
 
+@Radium
 export default class UserItem extends Component {
   static propTypes = {
     user: React.PropTypes.shape({
@@ -17,8 +20,8 @@ export default class UserItem extends Component {
       <li>
         <span>{user.userName}</span>
         {onRemoveClick !== undefined ?
-          <button onClick={ () => onRemoveClick(user.id) }>Remove User</button> :
-          <button onClick={ () => onAddClick(user) }>Add User</button>
+          <button style={[styles.base, styles.remove]} onClick={ () => onRemoveClick(user.id) }>Remove User</button> :
+          <button style={styles.base} onClick={ () => onAddClick(user) }>Add User</button>
         }
       </li>
     );

@@ -33,14 +33,6 @@ function renderFullPage(html, initialData) {
           <html>
             <head>
               <title>Test UGC App!</title>
-              <style>
-                .selected {
-                  background-color: pink;
-                }
-                .filled {
-                  background-color: red;
-                }
-              </style>
             </head>
             <body>
               <h1>Test UGC App!</h1>
