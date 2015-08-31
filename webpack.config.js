@@ -29,6 +29,9 @@ module.exports = {
     'fallback': path.join(__dirname, 'node_modules')
   },
   module: {
+    preLoaders: [
+        { test: /\.json$/, loader: 'json'},
+    ],
     loaders: [{
       test: /\.js$/,
       loaders: ['react-hot', 'babel'],

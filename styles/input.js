@@ -1,8 +1,10 @@
+import { WHITE, SECONDARY } from './colors';
+
 export const styles = {
   base: {
-    backgroundColor: 'white'
+    backgroundColor: WHITE
   },
   filled: {
-    backgroundColor: 'violet'
+    backgroundColor: SECONDARY
   }
 };

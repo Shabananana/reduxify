@@ -1,37 +1,39 @@
+import * as colors from './colors';
+
 export const styles = {
   base: {
-    backgroundColor: 'lightcoral',
+    backgroundColor: colors.PRIMARY,
     border: 0,
     borderRadius: 4,
-    color: 'white',
+    color: colors.WHITE,
     padding: '1em',
     marginLeft: '2em',
 
     ':hover': {
-      backgroundColor: 'deeppink'
+      backgroundColor: colors.PRIMARY_DARK_ACCENT
     },
 
     ':focus': {
-      backgroundColor: 'lightsalmon'
+      backgroundColor: colors.PRIMARY_LIGHT_ACCENT
     },
 
     ':active': {
-      backgroundColor: 'salmon'
+      backgroundColor: colors.PRIMARY_LIGHT_ACCENT
     }
   },
   remove: {
-    backgroundColor: 'violet',
+    backgroundColor: colors.SECONDARY,
 
     ':hover': {
-      backgroundColor: 'orchid'
+      backgroundColor: colors.SECONDARY_DARK_ACCENT
     },
 
     ':focus': {
-      backgroundColor: 'purple'
+      backgroundColor: colors.SECONDARY_LIGHT_ACCENT
     },
 
     ':active': {
-      backgroundColor: 'rebeccapurple'
+      backgroundColor: colors.SECONDARY_LIGHT_ACCENT
     }
   }
 };

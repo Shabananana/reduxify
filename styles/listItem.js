@@ -1,10 +1,12 @@
+import { PRIMARY, PRIMARY_LIGHT_ACCENT, WHITE } from './colors';
+
 export const styles = {
   base: {
-    backgroundColor: 'lightcoral',
-    color: 'white'
+    backgroundColor: PRIMARY,
+    color: WHITE
   },
   selected: {
-    backgroundColor: 'deeppink',
-    color: 'white'
+    backgroundColor: PRIMARY_LIGHT_ACCENT,
+    color: WHITE
   }
 };
