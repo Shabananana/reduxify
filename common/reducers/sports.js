@@ -1,5 +1,4 @@
 import { SWITCH_SPORT } from '../constants/ActionTypes';
-import { VisibilityFilters } from '../constants/Filters';
 import { initialSports } from '../constants/InitialState';
 
 export default function sports(state = initialSports, action) {

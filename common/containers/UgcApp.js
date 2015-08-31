@@ -20,17 +20,17 @@ class UgcApp extends Component {
     users: PropTypes.array.isRequired,
     searchedUsers: PropTypes.array.isRequired,
     sportFilter: PropTypes.oneOf([
-      'SHOW_NFL',
-      'SHOW_MLB',
-      'SHOW_NBA'
+      VisibilityFilters.SHOW_NFL,
+      VisibilityFilters.SHOW_MLB,
+      VisibilityFilters.SHOW_NBA
     ]).isRequired,
     contestTypeFilter: PropTypes.oneOf([
-      'SHOW_H2H',
-      'SHOW_LEAGUE'
+      VisibilityFilters.SHOW_H2H,
+      VisibilityFilters.SHOW_LEAGUE
     ]).isRequired,
     accessTypeFilter: PropTypes.oneOf([
-      'SHOW_PRIVATE',
-      'SHOW_PUBLIC'
+      VisibilityFilters.SHOW_PRIVATE,
+      VisibilityFilters.SHOW_PUBLIC
     ]).isRequired
   }
 

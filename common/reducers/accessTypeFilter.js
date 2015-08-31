@@ -1,6 +1,6 @@
 import { SWITCH_ACCESS_TYPE } from '../constants/ActionTypes';
 import { VisibilityFilters } from '../constants/Filters';
-const { SHOW_PRIVATE, SHOW_PUBLIC} = VisibilityFilters;
+const { SHOW_PRIVATE } = VisibilityFilters;
 
 export default function accessTypeFilter(state = SHOW_PRIVATE, action) {
   switch (action.type) {

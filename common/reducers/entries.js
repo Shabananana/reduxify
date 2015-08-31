@@ -1,5 +1,4 @@
 import { UPDATE_ENTRY, CLEAR_ENTRIES } from '../constants/ActionTypes';
-import { VisibilityFilters } from '../constants/Filters';
 import { initialEntries } from '../constants/InitialState';
 
 export default function entries(state = initialEntries, action) {

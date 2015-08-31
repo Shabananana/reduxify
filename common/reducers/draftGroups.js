@@ -1,5 +1,4 @@
 import { SWITCH_DRAFTGROUP } from '../constants/ActionTypes';
-import { VisibilityFilters } from '../constants/Filters';
 import { initialDraftGroups } from '../constants/InitialState';
 
 export default function draftGroups(state = initialDraftGroups, action) {
