@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router';
+import { Decorator as Cerebral } from 'cerebral-react';
 import SportPicker from './SportPicker';
 import DraftGroupPicker from './DraftGroupPicker';
 import EntryPicker from './EntryPicker';
@@ -11,6 +10,19 @@ import AccessType from '../components/AccessType';
 import { VisibilityFilters } from '../constants/Filters';
 import { switchSport, switchContestType, switchAccessType, switchDraftGroup, updateEntry, updateLeagueEntry, clearEntries, updateUser, fetchUsers, createUser, deleteUser } from '../actions/UgcActions';
 
+
+@Cerebral({
+  sports: ['sports'],
+  draftGroups: ['draftGroups'],
+  entries: ['entries'],
+  users: ['users'],
+  searchedUsers: ['searchedUsers'],
+  newUser: ['newUser'],
+  leagueEntry: ['leagueEntry'],
+  sportFilter: ['sportFilter'],
+  contestTypeFilter: ['contestTypeFilter'],
+  accessTypeFilter: ['accessTypeFilter']
+})
 class UgcApp extends Component {
   static propTypes = {
     sports: PropTypes.array.isRequired,
@@ -34,6 +46,10 @@ class UgcApp extends Component {
     ]).isRequired
   }
 
+  componentDidMount() {
+    this.props.signals.appMounted();
+  }
+
   submitEntries = () => {
     const { sports, draftGroups, entries, dispatch } = this.props;
     let formattedData = {
@@ -53,7 +69,6 @@ class UgcApp extends Component {
 
     return (
       <div>
-        <Link to="test">Go to ExampleRouteComponent!</Link>
         <SportPicker sports={sports} onSwitchClick={ id => dispatch(switchSport(id)) }/>
         <DraftGroupPicker draftGroups={draftGroups} onSwitchClick={ (id, sportId) => dispatch(switchDraftGroup(id, sportId)) } />
         <ContestType contestType={contestTypeFilter} onSwitchClick={ (contestType) => dispatch(switchContestType(contestType)) } />

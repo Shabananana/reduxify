@@ -1,0 +1,9 @@
+export const VisibilityFilters = {
+  SHOW_NFL: 'SHOW_NFL',
+  SHOW_MLB: 'SHOW_MLB',
+  SHOW_NBA: 'SHOW_NBA',
+  SHOW_H2H: 'SHOW_H2H',
+  SHOW_LEAGUE: 'SHOW_LEAGUE',
+  SHOW_PRIVATE: 'SHOW_PRIVATE',
+  SHOW_PUBLIC: 'SHOW_PUBLIC'
+};

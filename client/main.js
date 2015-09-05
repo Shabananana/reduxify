@@ -1,8 +1,6 @@
 import React from 'react';
-import Root from '../common/containers/Root';
-import BrowserHistory from 'react-router/lib/BrowserHistory';
+import controller from './controller.js';
+import { Container } from 'cerebral-react';
+import UgcApp from '../containers/UgcApp';
 
-React.render(
-  <Root history={new BrowserHistory()} />,
-  document.getElementById('root')
-);
+React.render(<Container controller={controller}><UgcApp /></Container>, document.body);

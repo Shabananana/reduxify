@@ -23,7 +23,7 @@
     "isomorphic-fetch": "^2.1.1",
     "lodash": "~3.8.0",
     "radium": "^0.13.8",
-    "react": "^0.13.3",
+    "react": "^0.14.0",
     "react-immutable-proptypes": "1.0.0",
     "react-router": "^1.0.0-beta3"
   },
